@@ -1,7 +1,7 @@
 #include <IRremote.h>
 
 int RECV_PIN = 11;
-int WAIT = 50;
+unsigned int WAIT = 50;
 
 IRrecv irrecv(RECV_PIN);
 
