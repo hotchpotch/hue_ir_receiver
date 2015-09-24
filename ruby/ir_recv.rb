@@ -3,7 +3,7 @@ require 'serialport'
 require 'color'
 require 'hue'
 
-SERIAL_PORT = ENV['SERIAL_PORT'] || Dir.glob('/dev/cu.*usbserial*').first || raise("can't find serialport")
+SERIAL_PORT = ENV['SERIAL_PORT'] || Dir.glob('/dev/cu.*usbserial*').first || raise("can't find usbserial")
 
 module ToHSB
   def to_hsb
@@ -71,11 +71,7 @@ class IRReceiver
   end
 
   def power
-    if (Time.now - @last_power) > 0.5
-      @last_power = Time.now
-      @on = !@on
-      lights_state({on: @on}, 1)
-    end
+    lights_state({on: false}, 1)
   end
 
   def red
